@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionFigureTrackerApp", "ActionFigureTrackerApp\ActionFigureTrackerApp.csproj", "{7BAB101E-D6F8-4886-8375-D4653724DDCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionFigureTrackerApp.Tests", "ActionFigureTrackerApp.Tests\ActionFigureTrackerApp.Tests.csproj", "{46830713-AB14-442A-9BEF-F07D799CE80F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7BAB101E-D6F8-4886-8375-D4653724DDCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BAB101E-D6F8-4886-8375-D4653724DDCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BAB101E-D6F8-4886-8375-D4653724DDCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46830713-AB14-442A-9BEF-F07D799CE80F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46830713-AB14-442A-9BEF-F07D799CE80F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46830713-AB14-442A-9BEF-F07D799CE80F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46830713-AB14-442A-9BEF-F07D799CE80F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
