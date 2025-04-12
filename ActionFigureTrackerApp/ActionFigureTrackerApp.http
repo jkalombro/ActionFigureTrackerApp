@@ -1,0 +1,6 @@
+@ActionFigureTrackerApp_HostAddress = http://localhost:5062
+
+GET {{ActionFigureTrackerApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
