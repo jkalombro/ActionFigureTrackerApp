@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionFigureTrackerApp", "ActionFigureTrackerApp\ActionFigureTrackerApp.csproj", "{7BAB101E-D6F8-4886-8375-D4653724DDCF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionFigureTrackerApp.Tests", "ActionFigureTrackerApp.Tests\ActionFigureTrackerApp.Tests.csproj", "{46830713-AB14-442A-9BEF-F07D799CE80F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionFigureTrackerApp.Core", "ActionFigureTrackerApp.Core\ActionFigureTrackerApp.Core.csproj", "{F92D90A1-3840-4691-893E-EAAE4E5D9949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionFigureTrackerApp.Application", "ActionFigureTrackerApp.Application\ActionFigureTrackerApp.Application.csproj", "{DF23C7DB-9259-48F0-A629-84C2BBE81D45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionFigureTrackerApp.Infrastructure", "ActionFigureTrackerApp.Infrastructure\ActionFigureTrackerApp.Infrastructure.csproj", "{70E24A71-A570-4041-B30E-1F59D2BB000C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{46830713-AB14-442A-9BEF-F07D799CE80F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46830713-AB14-442A-9BEF-F07D799CE80F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46830713-AB14-442A-9BEF-F07D799CE80F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F92D90A1-3840-4691-893E-EAAE4E5D9949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92D90A1-3840-4691-893E-EAAE4E5D9949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92D90A1-3840-4691-893E-EAAE4E5D9949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92D90A1-3840-4691-893E-EAAE4E5D9949}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF23C7DB-9259-48F0-A629-84C2BBE81D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF23C7DB-9259-48F0-A629-84C2BBE81D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF23C7DB-9259-48F0-A629-84C2BBE81D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF23C7DB-9259-48F0-A629-84C2BBE81D45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70E24A71-A570-4041-B30E-1F59D2BB000C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70E24A71-A570-4041-B30E-1F59D2BB000C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70E24A71-A570-4041-B30E-1F59D2BB000C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70E24A71-A570-4041-B30E-1F59D2BB000C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

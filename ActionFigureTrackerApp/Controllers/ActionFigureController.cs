@@ -1,6 +1,6 @@
-﻿using ActionFigureTrackerApp.Data;
-using ActionFigureTrackerApp.Dto;
-using ActionFigureTrackerApp.Entities;
+﻿using ActionFigureTrackerApp.Application.Dto;
+using ActionFigureTrackerApp.Core.Entities;
+using ActionFigureTrackerApp.Infrastructure.Data;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -70,6 +70,5 @@ namespace ActionFigureTrackerApp.Controllers
 
       return Ok();
     }
-
   }
 }

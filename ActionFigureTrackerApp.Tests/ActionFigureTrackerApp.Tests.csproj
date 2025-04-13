@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ActionFigureTrackerApp.Application\ActionFigureTrackerApp.Application.csproj" />
+    <ProjectReference Include="..\ActionFigureTrackerApp.Core\ActionFigureTrackerApp.Core.csproj" />
+    <ProjectReference Include="..\ActionFigureTrackerApp.Infrastructure\ActionFigureTrackerApp.Infrastructure.csproj" />
     <ProjectReference Include="..\ActionFigureTrackerApp\ActionFigureTrackerApp.csproj" />
   </ItemGroup>
 

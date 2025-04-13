@@ -1,4 +1,4 @@
-﻿using ActionFigureTrackerApp.Data;
+﻿using ActionFigureTrackerApp.Infrastructure.Data;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Moq;

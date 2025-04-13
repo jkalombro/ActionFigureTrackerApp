@@ -1,8 +1,7 @@
-﻿namespace ActionFigureTrackerApp.Entities
+﻿namespace ActionFigureTrackerApp.Application.Dto
 {
-  public class ActionFigure
+  public class ActionFigureDto
   {
-    public int ActionFigureId { get; set; }
     public required string Name { get; set; }
     public string? Description { get; set; }
     public string? MediaType { get; set; }

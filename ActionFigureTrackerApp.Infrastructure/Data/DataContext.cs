@@ -1,7 +1,7 @@
-﻿using ActionFigureTrackerApp.Entities;
+﻿using ActionFigureTrackerApp.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ActionFigureTrackerApp.Data
+namespace ActionFigureTrackerApp.Infrastructure.Data
 {
   public class DataContext : DbContext
   {

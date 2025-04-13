@@ -1,8 +1,8 @@
-﻿using ActionFigureTrackerApp.Dto;
-using ActionFigureTrackerApp.Entities;
+﻿using ActionFigureTrackerApp.Application.Dto;
+using ActionFigureTrackerApp.Core.Entities;
 using AutoMapper;
 
-namespace ActionFigureTrackerApp.Core
+namespace ActionFigureTrackerApp.Application.Utils
 {
   public class MappingProfile : Profile
   {

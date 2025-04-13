@@ -1,5 +1,5 @@
-using ActionFigureTrackerApp.Core;
-using ActionFigureTrackerApp.Data;
+using ActionFigureTrackerApp.Application.Utils;
+using ActionFigureTrackerApp.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,8 +22,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

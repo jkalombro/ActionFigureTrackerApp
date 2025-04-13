@@ -1,6 +1,6 @@
-﻿using ActionFigureTrackerApp.Controllers;
-using ActionFigureTrackerApp.Dto;
-using ActionFigureTrackerApp.Entities;
+﻿using ActionFigureTrackerApp.Application.Dto;
+using ActionFigureTrackerApp.Controllers;
+using ActionFigureTrackerApp.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
 
