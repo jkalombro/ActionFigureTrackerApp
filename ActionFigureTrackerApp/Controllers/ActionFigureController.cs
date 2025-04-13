@@ -1,9 +1,7 @@
 ﻿using ActionFigureTrackerApp.Application.Dto;
+using ActionFigureTrackerApp.Application.Services.Interfaces;
 using ActionFigureTrackerApp.Core.Entities;
-using ActionFigureTrackerApp.Infrastructure.Data;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace ActionFigureTrackerApp.Controllers
 {
@@ -11,20 +9,18 @@ namespace ActionFigureTrackerApp.Controllers
   [ApiController]
   public class ActionFigureController : ControllerBase
   {
-    private readonly DataContext _dataContext;
-    private readonly IMapper _mapper;
+    private readonly IActionFigureService _actionFigureService;
 
-    public ActionFigureController(DataContext dataContext, IMapper mapper)
+    public ActionFigureController(IActionFigureService actionFigureService)
     {
-      _dataContext = dataContext;
-      _mapper = mapper;
+      _actionFigureService = actionFigureService;
     }
 
     [HttpGet]
     [Route("")]
     public async Task<ActionResult<List<ActionFigure>>> GetAllActionFigures()
     {
-      var figure = await _dataContext.ActionFigures.ToListAsync();
+      var figure = await _actionFigureService.GetAll();
 
       return Ok(figure);
     }
@@ -33,7 +29,7 @@ namespace ActionFigureTrackerApp.Controllers
     [Route("{actionFigureId}")]
     public async Task<ActionResult<ActionFigure>> GetActionFigure([FromRoute] int actionFigureId)
     {
-      var figure = await _dataContext.ActionFigures.FindAsync(actionFigureId);
+      var figure = await _actionFigureService.GetActionFigure(actionFigureId);
 
       if (figure == null)
         return NotFound("Action Figure not Found");
@@ -45,9 +41,7 @@ namespace ActionFigureTrackerApp.Controllers
     [Route("")]
     public async Task<IActionResult> AddActionFigure([FromBody] ActionFigureDto actionFigure)
     {
-      var figure = _mapper.Map<ActionFigure>(actionFigure);
-      _dataContext.ActionFigures.Add(figure);
-      await _dataContext.SaveChangesAsync();
+      await _actionFigureService.AddActionFigure(actionFigure);
 
       return Ok();
     }
@@ -56,19 +50,15 @@ namespace ActionFigureTrackerApp.Controllers
     [Route("{actionFigureId}")]
     public async Task<IActionResult> UpdateActionFigure([FromRoute] int actionFigureId, [FromBody] ActionFigureDto actionFigure)
     {
-      var figure = await _dataContext.ActionFigures.FindAsync(actionFigureId);
-
-      if (figure == null)
-        return NotFound("Action Figure not Found");
-
-      figure.Name = actionFigure.Name;
-      figure.Description = actionFigure.Description;
-      figure.MediaType = actionFigure.MediaType;
-      figure.MediaName = actionFigure.MediaName;
-
-      await _dataContext.SaveChangesAsync();
-
-      return Ok();
+      try
+      {
+        await _actionFigureService.UpdateActionFigure(actionFigureId, actionFigure);
+        return Ok();
+      }
+      catch (KeyNotFoundException ex)
+      {
+        return NotFound(ex.Message);
+      }
     }
   }
 }

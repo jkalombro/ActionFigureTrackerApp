@@ -1,3 +1,4 @@
+using ActionFigureTrackerApp.Application;
 using ActionFigureTrackerApp.Application.Utils;
 using ActionFigureTrackerApp.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +13,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options =>
 {
-  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+  options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection"),
+    b => b.MigrationsAssembly("ActionFigureTrackerApp.Infrastructure"));
 });
 
+builder.Services.AddRepositories();
+builder.Services.AddServices();
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 var app = builder.Build();

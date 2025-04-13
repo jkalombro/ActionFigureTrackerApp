@@ -1,30 +1,36 @@
 ﻿using ActionFigureTrackerApp.Application.Dto;
+using ActionFigureTrackerApp.Application.Services.Interfaces;
 using ActionFigureTrackerApp.Controllers;
 using ActionFigureTrackerApp.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 using Xunit;
 
 namespace ActionFigureTrackerApp.Tests.Controllers;
 
 public class ActionFigureControllerTests : BaseIntegrationTest
 {
+  private readonly Mock<IActionFigureService> _mockActionFigureService;
   private readonly ActionFigureController _controller;
 
   public ActionFigureControllerTests()
     : base()
   {
-    _controller = new ActionFigureController(_dataContext, _mockMapper.Object);
+    _mockActionFigureService = new Mock<IActionFigureService>();
+    _controller = new ActionFigureController(_mockActionFigureService.Object);
   }
 
   [Fact]
   public async Task GetAllActionFigures_ReturnsOkResult_WithListOfActionFigures()
   {
     // Arrange
-    _dataContext.ActionFigures.AddRange(
-        new ActionFigure { ActionFigureId = 1, Name = "Figure1" },
-        new ActionFigure { ActionFigureId = 2, Name = "Figure2" }
-    );
-    await _dataContext.SaveChangesAsync();
+    var actionFigures = new List<ActionFigure>
+        {
+            new ActionFigure { ActionFigureId = 1, Name = "Figure1" },
+            new ActionFigure { ActionFigureId = 2, Name = "Figure2" }
+        };
+    _mockActionFigureService.Setup(service => service.GetAll())
+        .ReturnsAsync(actionFigures);
 
     // Act
     var result = await _controller.GetAllActionFigures();
@@ -40,8 +46,8 @@ public class ActionFigureControllerTests : BaseIntegrationTest
   {
     // Arrange
     var actionFigure = new ActionFigure { ActionFigureId = 1, Name = "Figure1" };
-    _dataContext.ActionFigures.Add(actionFigure);
-    await _dataContext.SaveChangesAsync();
+    _mockActionFigureService.Setup(service => service.GetActionFigure(1))
+        .ReturnsAsync(actionFigure);
 
     // Act
     var result = await _controller.GetActionFigure(1);
@@ -55,6 +61,10 @@ public class ActionFigureControllerTests : BaseIntegrationTest
   [Fact]
   public async Task GetActionFigure_ReturnsNotFound_WhenActionFigureDoesNotExist()
   {
+    // Arrange
+    _mockActionFigureService.Setup(service => service.GetActionFigure(1))
+        .ReturnsAsync((ActionFigure?)null);
+
     // Act
     var result = await _controller.GetActionFigure(1);
 
@@ -67,41 +77,43 @@ public class ActionFigureControllerTests : BaseIntegrationTest
   {
     // Arrange
     var actionFigureDto = new ActionFigureDto { Name = "NewFigure" };
-    var actionFigure = new ActionFigure { Name = "NewFigure" };
-    _mockMapper.Setup(x => x.Map<ActionFigure>(actionFigureDto))
-        .Returns(actionFigure);
+    _mockActionFigureService.Setup(service => service.AddActionFigure(actionFigureDto))
+        .Returns(Task.CompletedTask);
 
     // Act
     var result = await _controller.AddActionFigure(actionFigureDto);
 
     // Assert
     Assert.IsType<OkResult>(result);
-    Assert.Single(_dataContext.ActionFigures);
+    _mockActionFigureService.Verify(service => service.AddActionFigure(actionFigureDto), Times.Once);
   }
 
   [Fact]
   public async Task UpdateActionFigure_ReturnsOkResult_WhenActionFigureExists()
   {
     // Arrange
-    var actionFigure = new ActionFigure { ActionFigureId = 1, Name = "OldFigure" };
-    _dataContext.ActionFigures.Add(actionFigure);
-    await _dataContext.SaveChangesAsync();
-
     var actionFigureDto = new ActionFigureDto { Name = "UpdatedFigure" };
+    _mockActionFigureService.Setup(service => service.UpdateActionFigure(1, actionFigureDto))
+        .Returns(Task.CompletedTask);
 
     // Act
     var result = await _controller.UpdateActionFigure(1, actionFigureDto);
 
     // Assert
     Assert.IsType<OkResult>(result);
-    Assert.Equal("UpdatedFigure", actionFigure.Name);
+    _mockActionFigureService.Verify(service => service.UpdateActionFigure(1, actionFigureDto), Times.Once);
   }
 
   [Fact]
   public async Task UpdateActionFigure_ReturnsNotFound_WhenActionFigureDoesNotExist()
   {
+    // Arrange
+    var actionFigureDto = new ActionFigureDto { Name = "PlaceholderName" };
+    _mockActionFigureService.Setup(service => service.UpdateActionFigure(1, actionFigureDto))
+        .ThrowsAsync(new KeyNotFoundException("Action Figure not found"));
+
     // Act
-    var result = await _controller.UpdateActionFigure(1, new ActionFigureDto { Name = "PlaceholderName" });
+    var result = await _controller.UpdateActionFigure(1, actionFigureDto);
 
     // Assert
     Assert.IsType<NotFoundObjectResult>(result);
