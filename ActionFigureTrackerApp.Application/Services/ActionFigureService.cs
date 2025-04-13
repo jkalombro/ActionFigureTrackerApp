@@ -1,7 +1,7 @@
 ﻿using ActionFigureTrackerApp.Application.Dto;
 using ActionFigureTrackerApp.Application.Services.Interfaces;
 using ActionFigureTrackerApp.Core.Entities;
-using ActionFigureTrackerApp.Core.Repositories;
+using ActionFigureTrackerApp.Infrastructure.Repositories;
 using AutoMapper;
 
 namespace ActionFigureTrackerApp.Application.Services

@@ -1,6 +1,5 @@
 ﻿using ActionFigureTrackerApp.Application.Services;
 using ActionFigureTrackerApp.Application.Services.Interfaces;
-using ActionFigureTrackerApp.Core.Repositories;
 using ActionFigureTrackerApp.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,6 +1,6 @@
 ﻿using ActionFigureTrackerApp.Core.Entities;
 
-namespace ActionFigureTrackerApp.Core.Repositories
+namespace ActionFigureTrackerApp.Infrastructure.Repositories
 {
   public interface IActionFigureRepository : IBaseRepository<ActionFigure>
   { }

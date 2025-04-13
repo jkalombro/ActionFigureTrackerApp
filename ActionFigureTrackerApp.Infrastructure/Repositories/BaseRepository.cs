@@ -1,5 +1,4 @@
-﻿using ActionFigureTrackerApp.Core.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ActionFigureTrackerApp.Infrastructure.Repositories
 {

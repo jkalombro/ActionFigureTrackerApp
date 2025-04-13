@@ -1,4 +1,4 @@
-﻿namespace ActionFigureTrackerApp.Core.Repositories
+﻿namespace ActionFigureTrackerApp.Infrastructure.Repositories
 {
   public interface IBaseRepository<T> where T : class
   {
